@@ -3,6 +3,7 @@ import cv2 as cv
 from ultralytics import YOLO
 from ezauv.utils import LogLevel
 import sys
+from math import arctan
 
 from ezauv.hardware.sensor_interface import Sensor
 
@@ -79,8 +80,10 @@ class CameraObject(Sensor):
 
                 class_index = int(box.cls[0])
 
-                distence = 0  # implamented later
-                angle = 0  # implamented later
+                size = 1  # pulled from a dictionary later.
+                ref_ratio = 0.42  # dont worry about need to grab a number for this at some point
+                distence = (2.4 * 20 * 1920) / (width_pix * 7.2)
+                angle = arctan(size / distence)
 
                 bouys.append(class_index, distence, angle)
 
