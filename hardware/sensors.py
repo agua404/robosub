@@ -118,18 +118,3 @@ class DVLSensor(Sensor):
     def overview(self) -> None:
         self.log(f"Waterlinked DVL-A50 Sensor connected to {self.ip}:{self.port}")
 
-class Camera(Sensor):
-    def __init__(self):
-        ...
-
-    def initialize(self) -> None:
-        ...
-
-    def get_data(self) -> dict:
-        angle = socket.get()
-        return {
-            "angle_to_buoy": angle
-        }
-
-    def overview(self) -> None:
-        ...
